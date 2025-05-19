@@ -3,7 +3,7 @@ import { onMounted, ref, nextTick } from 'vue'
 import 'lightbox2'
 import { useGalleryStore } from '../stores/gallery'
 // import 'lightbox2/dist/css/lightbox.css'
-// import 'lightbox2/dist/js/lightbox-plus-jquery.min.js'
+import 'lightbox2/dist/js/lightbox-plus-jquery.min.js'
 import Lightbox from 'lightbox2'
 
 // data
