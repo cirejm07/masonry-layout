@@ -2,6 +2,8 @@
 import { onMounted, ref, nextTick } from 'vue'
 import 'lightbox2'
 import { useGalleryStore } from '../stores/gallery'
+import 'lightbox2/dist/css/lightbox.css'
+import Lightbox from 'lightbox2'
 
 // data
 const images = ref([])
@@ -15,6 +17,9 @@ const store = useGalleryStore()
 onMounted(async () => {
   const randomNumber = Math.floor(Math.random() * 10) + 1
   await store.fetchImages(randomNumber)
+  nextTick(() => {
+    Lightbox.init()
+  })
 })
 </script>
 

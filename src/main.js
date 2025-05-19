@@ -6,6 +6,8 @@ import router from './router'
 import $ from 'jquery'
 window.$ = $
 window.jQuery = $
+import 'lightbox2/dist/css/lightbox.css'
+import 'lightbox2/dist/js/lightbox.js'
 
 const app = createApp(App)
 app.use(VueLazyLoad, {

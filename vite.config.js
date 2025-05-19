@@ -15,4 +15,9 @@ export default defineConfig({
       jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['lightbox2'],
+    },
+  },
 })
