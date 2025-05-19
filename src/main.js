@@ -3,6 +3,9 @@ import VueLazyLoad from 'vue3-lazyload'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
+import $ from 'jquery'
+window.$ = $
+window.jQuery = $
 
 const app = createApp(App)
 app.use(VueLazyLoad, {
