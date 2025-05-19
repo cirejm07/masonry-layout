@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
+      lightbox2: path.resolve(__dirname, 'node_modules/lightbox2'),
     },
   },
   build: {
