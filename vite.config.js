@@ -12,12 +12,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
-    },
-  },
-  build: {
-    rollupOptions: {
-      external: ['lightbox2'],
     },
   },
 })

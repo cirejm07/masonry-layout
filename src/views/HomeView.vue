@@ -1,10 +1,6 @@
 <script setup>
 import { onMounted, ref, nextTick } from 'vue'
-import 'lightbox2'
 import { useGalleryStore } from '../stores/gallery'
-// import 'lightbox2/dist/css/lightbox.css'
-import 'lightbox2/dist/js/lightbox-plus-jquery.min.js'
-import Lightbox from 'lightbox2'
 
 // data
 const images = ref([])
@@ -18,9 +14,6 @@ const store = useGalleryStore()
 onMounted(async () => {
   const randomNumber = Math.floor(Math.random() * 10) + 1
   await store.fetchImages(randomNumber)
-  nextTick(() => {
-    Lightbox.init()
-  })
 })
 </script>
 
@@ -34,14 +27,7 @@ onMounted(async () => {
       <div v-if="!store.loading">
         <ul class="images-container">
           <li class="images-container__card" v-for="image in store.images" :key="image.id">
-            <a
-              :href="image.download_url"
-              data-lightbox="gallery"
-              :data-title="image.author"
-              :title="image.author"
-            >
-              <img v-lazy="image.download_url" loading="lazy" :alt="image.author" />
-            </a>
+            <img v-lazy="image.download_url" loading="lazy" :alt="image.author" />
           </li>
         </ul>
       </div>
