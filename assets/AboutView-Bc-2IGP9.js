@@ -1,1 +1,0 @@
-import{_ as o,c as t,a as s,o as a}from"./index-z3wFBlB5.js";import"lightbox2";const n={},r={class:"about"};function c(i,e){return a(),t("div",r,e[0]||(e[0]=[s("h1",null,"This is an about page",-1)]))}const u=o(n,[["render",c]]);export{u as default};
