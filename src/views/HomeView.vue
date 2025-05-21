@@ -27,7 +27,13 @@ onMounted(async () => {
       <div v-if="!store.loading">
         <ul class="images-container">
           <li class="images-container__card" v-for="image in store.images" :key="image.id">
-            <img v-lazy="image.download_url" loading="lazy" :alt="image.author" />
+            <div>
+              <img v-lazy="image.download_url" loading="lazy" :alt="image.author" />
+              <span aria-label="author">{{ image.author }}</span>
+              <a :href="image.url" target="_blank" title="download image - opens in a new tab"
+                ><i class="fa-solid fa-download"></i
+              ></a>
+            </div>
           </li>
         </ul>
       </div>
@@ -51,11 +57,37 @@ header {
   padding: 0;
 }
 
-.images-container__card a {
+.images-container__card div {
   overflow: hidden;
   display: block;
   width: 100%;
   height: 100%;
+  position: relative;
+}
+.images-container__card div a {
+  color: var(--bs-gray-dark);
+  font-size: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 0.35s ease-in-out;
+  opacity: 0;
+  visibility: visible;
+  z-index: 1;
+  color: #fff;
+}
+
+.images-container__card div span {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1;
+  color: #fff;
+  letter-spacing: 0.125rem;
+  font-size: 16px;
+  transition: all 0.35s ease-in-out;
+  opacity: 0;
+  visibility: visible;
 }
 
 .images-container__card {
@@ -69,11 +101,21 @@ header {
   transition: all 0.35s ease-in-out;
 }
 
-.images-container__card img:hover {
+.images-container__card div:hover img {
   transform: scale(1.1);
+  filter: brightness(0.7);
 }
 
-.images-container:has(.images-container__card img:hover) .images-container__card img:not(:hover) {
+.images-container__card div:hover img ~ a,
+.images-container__card div:hover img ~ span {
+  opacity: 1;
+  visibility: visible;
+}
+
+.images-container:has(.images-container__card div:hover img)
+  .images-container__card
+  div:not(:hover)
+  img {
   filter: blur(10px) !important;
 }
 
